@@ -18,6 +18,8 @@ NeoBundle 'flazz/vim-colorschemes'
 
 NeoBundle 'majutsushi/tagbar'
 
+NeoBundle 'tpope/vim-rails'
+
 
 call neobundle#end()
 
@@ -29,13 +31,17 @@ NeoBundleCheck
 nmap ; :
 let mapleader = ","
 
+set list
 set hidden
 set hlsearch
 set t_Co=256
 set nobackup
 set noswapfile
 set laststatus=2
-set cursorline " performance sucks on large file
+" set cursorline " performance sucks on large file
+
+" Hidden chars
+set listchars=tab:▸\ ,trail:·
 
 " Tab control
 nnoremap <c-t> :tabnew<cr>
@@ -48,7 +54,7 @@ nnoremap <leader>6 6gt
 nnoremap <leader>7 7gt
 
 " Appearance
-color elflord
+color xoria256
 
 " Tagbar
 nnoremap <F8> :TagbarToggle<cr>
