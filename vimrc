@@ -74,7 +74,10 @@ nnoremap <leader>ne :VimFilerExplorer -fnamewidth=0<cr>
 command Input :execute "rightb vsp " . expand("%:p:h") . "/input.txt"
 autocmd FileType cpp map <F9> :!g++ -std=c++14 -o "%:p:r" "%:p" && "%:p:r" < "%:p:h"/input.txt && rm "%:p:r"<cr>
 autocmd Filetype cpp setlocal et
+autocmd Filetype xml setlocal sw=4 sts=4 et
 autocmd Filetype java setlocal sw=4 sts=4 et
+autocmd Filetype json setlocal sw=2 sts=2 et
+autocmd Filetype javascript setlocal sw=2 sts=2 et
 
 " Unite
 nnoremap <leader>b :Unite buffer<cr>
