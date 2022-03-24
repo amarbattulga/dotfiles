@@ -11,9 +11,11 @@ call plug#begin()
 
 " Make sure you use single quotes
 
-Plug 'tpope/vim-surround'
-Plug 'flazz/vim-colorschemes'
+Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
+Plug 'flazz/vim-colorschemes'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 " Initialize plugin system
 call plug#end()
@@ -31,7 +33,7 @@ set laststatus=2
 set visualbell t_vb=
 set listchars=tab:▸\ ,trail:·
 set cursorline
-color xoria256
+color jellybeans
 " }
 
 " Bindings {
