@@ -1,40 +1,24 @@
-" Neobundle {
 set nocompatible
 
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-call neobundle#begin(expand('~/.vim/bundle'))
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Make sure you use single quotes
 
-NeoBundle 'Shougo/vimproc.vim', { 'build' : { 'mac' : 'make' } }
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler.vim'
-NeoBundle 'Shougo/vimshell.vim'
+Plug 'tpope/vim-surround'
+Plug 'flazz/vim-colorschemes'
+Plug 'easymotion/vim-easymotion'
 
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'easymotion/vim-easymotion'
+" Initialize plugin system
+call plug#end()
 
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-
-NeoBundle 'majutsushi/tagbar'
-
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'aperezdc/vim-template'
-
-
-call neobundle#end()
-
-filetype plugin indent on
-
-NeoBundleCheck
-" }
-
-" General {
+" Basics {
 syntax on
 set list
 set hidden
@@ -50,24 +34,9 @@ set cursorline
 color xoria256
 " }
 
-
-" Filetype specific configs {
-command Input :execute "rightb vsp " . expand("%:p:h") . "/input.txt"
-autocmd FileType cpp map <F9> :!g++ -std=c++14 -o "%:p:r" "%:p" && "%:p:r" < "%:p:h"/input.txt && rm "%:p:r"<cr>
-autocmd Filetype cpp setlocal et
-autocmd Filetype xml setlocal sw=4 sts=4 et
-autocmd Filetype java setlocal sw=4 sts=4 et
-autocmd Filetype json setlocal sw=2 sts=2 et
-autocmd Filetype javascript setlocal sw=2 sts=2 et
-" }
-
 " Bindings {
 nmap ; :
 let mapleader = ","
-nnoremap <leader>b :Unite buffer<cr>
-nnoremap <space>s :Unite -quick-match buffer<cr>
-nnoremap <F8> :TagbarToggle<cr>
-nnoremap <leader>ne :VimFilerExplorer -fnamewidth=0<cr>
 " }
 
 " Tab control bindings {
@@ -89,13 +58,12 @@ endfunction
 command JSONView :exec JSONView()
 " }
 
-" Plugin config {
-let g:airline#extensions#tabline#enabled = 1
-let g:templates_directory=["~/.vim/templates"]
-
-call unite#custom#profile('default', 'context', {
-\   'direction': 'botright',
-\   'vertical_preview': 1,
-\   'winheight': 15
-\ })
+" Filetype specific configs {
+command Input :execute "rightb vsp " . expand("%:p:h") . "/input.txt"
+autocmd FileType cpp map <F9> :!g++ -std=c++14 -o "%:p:r" "%:p" && "%:p:r" < "%:p:h"/input.txt && rm "%:p:r"<cr>
+autocmd Filetype cpp setlocal et
+autocmd Filetype xml setlocal sw=4 sts=4 et
+autocmd Filetype java setlocal sw=4 sts=4 et
+autocmd Filetype json setlocal sw=2 sts=2 et
+autocmd Filetype javascript setlocal sw=2 sts=2 et
 " }
